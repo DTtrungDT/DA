@@ -1,0 +1,68 @@
+@import url(../styles.scss);
+
+.messages {
+    background-color: var(--color-white);
+    border-radius: var(--card-border-radius);
+    padding: var(--card-padding);
+
+    .heading {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+    }
+
+    i {
+        font-size: 1.4rem;
+    }
+
+    .search-bar {
+        display: flex;
+        align-items: center;
+        background-color: var(--color-light);
+        border-radius: var(--border-radius);
+        padding: var(--search-padding);
+        margin-bottom: 1rem;
+
+        input[type="search"] {
+            background: transparent;
+            width: 30vw;
+            margin-left: 1rem;
+            font-size: 0.9rem;
+            color: var(--color-dark);
+
+            &::placeholder {
+                color: var(--color-gray);
+            }
+        }
+    }
+
+    .category {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+
+        h6 {
+            width: 100%;
+            text-align: center;
+            border-bottom: 4px solid var(--color-light);
+            padding-bottom: 0.5rem;
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
+
+        .active {
+            border-color: var(--color-dark);
+        }
+    }
+
+    .list-messages {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .message-requests {
+        color: var(--color-primary);
+    }
+}

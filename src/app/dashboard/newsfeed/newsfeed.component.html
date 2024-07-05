@@ -1,0 +1,120 @@
+<body>
+    <div class="container">
+        <!-- ===================== LEFT =========================== -->
+        <div class="left">
+            <app-sidebar [showCreatePost]="true" [currentUser]="this.currentUser" (onSettingClick)="showTab($event)"
+                (onCreatePostClick)="createPostButtonClick()">
+            </app-sidebar>
+        </div>
+
+        <!-- ===================== MIDDLE =========================== -->
+        <div class="middle">
+            <div class="tab-home">
+                <app-create-post [currentUser]="this.currentUser"></app-create-post>
+                <div class="News-everyday"> 
+                    <section>
+                        <h2>Suggested tourist attractions every day</h2> <br>
+                        <h3>1. Thảo Cầm Viên - Khu bảo tồn động - thực vật lớn của thành phố.</h3> <br>
+                        <p>Với những du khách là trẻ em thì được cùng bố mẹ đến với sở thú là chuyến đi tuyệt vời nhất. Thảo Cầm Viên là một trong những sở thú nổi tiếng tại Thành phố Hồ Chí Minh. Tại đây có hơn 1000 cá thể động vật và hơn 2000 loài hoa, cây cảnh độc đáo giúp cho bạn thoải mái tham quan. </p> <br>
+                        <a href="https://www.bachhoaxanh.com/kinh-nghiem-hay/tham-quan-thao-cam-vien-sai-gon-cuc-ly-tuong-vao-cuoi-tuan-1416530" style="color: white; font-size: 16px;text-decoration: underline;">Đọc thêm</a> <br>
+                        <img src="https://cdn.tgdd.vn/Files/2022/02/21/1416530/tham-quan-thao-cam-vien-sai-gon-cuc-ly-tuong-vao-cuoi-tuan-202202211016241834.jpg" alt="Thảo Cầm Viên" width="100%"> <br>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15677.239388302329!2d106.68683647910673!3d10.787563932653132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f4b3330bcc7%3A0x4db964d76bf6e18e!2zVGjhuqNvIEPhuqdtIFZpw6puIFPDoGkgR8Oybg!5e0!3m2!1svi!2s!4v1720182554939!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>   
+                    </section>
+                           <br>              
+                           <section>
+                            <h3>2.  Khu du lịch sinh thái Cần Giờ - địa điểm du lịch Sài Gòn lý tưởng cho chuyến đi phượt.</h3> <br>
+                            <p>Khu du lịch sinh thái Cần Giờ là địa điểm du lịch Sài Gòn lý tưởng cho những chuyến đi cuối tuần. Tại đây, bạn sẽ được hòa mình vào thiên nhiên tươi xanh, tránh xa được những ồn ào, áp lực của đô thị. Địa điểm du lịch Sài Gòn này cách trung tâm thành phố khoảng 50km, nên du khách có thể di chuyển bằng ô tô hoặc xe máy đều rất thuận tiện. Nếu có dịp ở lại với khu du lịch sinh thái Cần Giờ khoảng 2 ngày, du khách nên khám phá nhiều điểm du lịch lý tưởng như: khu du lịch Vàm Sát, đảo khỉ, xã đảo Thạnh An,…  </p> <br>
+                            <a href="https://vnexpress.net/cam-nang-du-lich-can-gio-4673430.html" style="color: white; font-size: 16px;text-decoration: underline;">Đọc thêm</a> <br>
+                            <img src="https://i1-dulich.vnecdn.net/2023/11/08/CG10-1515-1699438965.jpg?w=0&h=0&q=100&dpr=1&fit=crop&s=mTelECYFp2gXLxcMGGoGdg" alt="Thảo Cầm Viên" width="100%"> <br>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1004324.1923235924!2d105.64245514687497!3d10.489519499999993!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31754700700f8999%3A0xf730313292d7d0f9!2zS0RMIFNpbmggVGjDoWkgVsOgbSBTw6F0IEPhuqduIEdJ4bud!5e0!3m2!1svi!2s!4v1720184831282!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </section>
+                        <br>
+                        <br>
+                </div>
+                <!------------------ Feeds ------------------------->
+                <div class="feeds">
+                    <app-posts *ngFor="let feed of this.newFeeds" [currentUser]="this.currentUser" [postData]="feed">
+                    </app-posts>
+                </div>
+            </div>
+
+            <div class="tab-friends">
+                <h2>Friends: {{this.friends.length}}</h2>
+                <app-friend-card *ngFor="let friend of this.friends" [currentUser]="this.currentUser"
+                    [friendship]="friend"></app-friend-card>
+            </div>
+
+            <div class="tab-settings">
+                <div class="action-buttons">
+                    <button class="btn btn-primary" (click)="showChangePass()">
+                        <i class="uil uil-asterisk"></i>
+                        <span>Change password</span>
+                    </button>
+                    <button class="btn btn-primary" (click)="logout()">
+                        <i class="uil uil-signout"></i>
+                        <span>Logout</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- ====================== RIGHT ========================== -->
+        <div class="right">
+            <app-messages [totalRequests]="this.friendRequests.length" [chatrooms]="this.chatrooms"
+                [currentUser]="this.currentUser" (onChatroomSelect)="showChatroom($event,true)"></app-messages>
+
+            <!-- FRIEND REQUESTS -->
+            <div class="friend-requests" *ngIf="this.friendRequests.length>0">
+                <h4>Requests</h4>
+                <app-requests *ngFor="let friendRequest of this.friendRequests" [friendshipData]="friendRequest"
+                    [currentUser]="this.currentUser">
+                </app-requests>
+            </div>
+        </div>
+    </div>
+
+    <div class="chatroom">
+        <app-chat [chatroomData]="this.chatroomData" [currentUser]="this.currentUser"
+            (onClose)="showChatroom(null,$event)"></app-chat>
+    </div>
+
+    <div class="change-password">
+        <div class="card">
+            <div class="title">
+                <h2>Change password</h2>
+            </div>
+            <form class="content" [formGroup]="this.changePassForm" (submit)="changePassword()">
+                <div class="input-pass">
+                    <label for="oldPassword">Current password</label>
+                    <input type="password" placeholder="Type your current pass" formControlName="oldPass"
+                        [(ngModel)]="this.currentPassStr">
+
+                    <div [hidden]="changePassForm.controls['oldPass'].untouched ||
+                     changePassForm.controls['oldPass'].valid" class="alert-danger">
+                        * Current password is required ! *
+                    </div>
+                </div>
+                <div class="input-pass">
+                    <label for="newPassword">New password</label>
+                    <input type="password" placeholder="Type your new pass" formControlName="newPass"
+                        [(ngModel)]="this.newPassStr">
+
+                    <div [hidden]="changePassForm.controls['newPass'].untouched ||
+                     changePassForm.controls['newPass'].valid" class="alert-danger">
+                        * New password is required ! *
+                    </div>
+                </div>
+                <div class="input-pass">
+                    <label for="confirmPassword">Confirm password</label>
+                    <input type="password" placeholder="Confirm your new pass" formControlName="confirmPass"
+                        [(ngModel)]="this.confirmPassStr">
+
+                    <div [hidden]="changePassForm.controls['confirmPass'].untouched ||
+                     changePassForm.controls['confirmPass'].valid" class="alert-danger">
+                        * Re-type password is required ! *
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Change</button>
+            </form>
+        </div>
+    </div>
+</body>

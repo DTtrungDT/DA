@@ -1,0 +1,19 @@
+<div class="chat">
+    <div class="title">
+        <div class="profile">
+            <div class="profile-picture">
+                <img [src]="this.chatUser.getAvatar()" (error)="this.chatUser.getDefaultAvatar()" alt="">
+            </div>
+            <h4>{{this.chatUser.getFullName()}}</h4>
+        </div>
+        <span class="close" (click)="close()"><i class="uil uil-multiply"></i></span>
+    </div>
+    <div class="chat-messages">
+        <div class="content" *ngFor="let mess of this.chatMessages"
+            [ngClass]="{'mine': mess.userId === this.currentUser.id}">{{mess.message}}</div>
+    </div>
+    <form class="input-message" (submit)="sendMessage()">
+        <input class="input" type="text" placeholder="Aa" [(ngModel)]="this.message" name="input-message">
+        <span class="send" (click)="sendMessage()"><i class="uil uil-message"></i></span>
+    </form>
+</div>
